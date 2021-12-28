@@ -1,0 +1,59 @@
+My first change Vira
+Dim x As Single
+Dim Sum As Single
+Dim Proi As Single
+Dim Rez As Single
+Dim Kol As Single
+Dim Avg As Single
+Private Sub UserForm_Initialize()
+For i = 1 To 10
+ListBox1.AddItem i
+Next i
+ListBox1.ListIndex = 0
+ListBox1.MultiSelect = fmMultiSelectMulti
+OptionButton1.Value = True
+TextBox1.Locked = True
+End Sub
+Private Sub CommandButton1_Click()
+If OptionButton1.Value = True Then
+Sum = 0
+With ListBox1
+For x = 0 To .ListCount - 1
+If .Selected(x) = True Then
+Sum = Sum + .List(x)
+End If
+Next x
+End With
+Rez = Sum
+TextBox1.Text = Rez
+ElseIf OptionButton3.Value = True Then
+Proi = 1
+With ListBox1
+For x = 0 To .ListCount - 1
+If .Selected(x) = True Then
+Proi = Proi * .List(x)
+End If
+Next x
+End With
+Rez = Proi
+TextBox1.Text = Rez
+ElseIf OptionButton2.Value = True Then
+Sum = 0
+Kol = 0
+With ListBox1
+For x = 0 To .ListCount - 1
+If .Selected(x) = True Then
+Sum = Sum + .List(x)
+Kol = Kol + 1
+End If
+Next x
+End With
+Avg = Sum / Kol
+Rez = Avg
+TextBox1.Text = Rez
+End If
+End Sub
+
+Private Sub CommandButton2_Click()
+End
+End Sub
